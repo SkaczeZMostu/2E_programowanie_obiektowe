@@ -12,7 +12,9 @@ int main()
     cout << "Podaj 3 bok" << endl;
     cin >> c;
 
-    if (a + b > c && a + c > b && b + c > a)
+    if(a == 0 && b == 0 && c == 0)
+        cout << "Nie można wpisać 0" << endl;
+    else if (a + b > c && a + c > b && b + c > a)
         cout << "da sie zrobic taki trojkat" << endl;
     else
         cout << "nie da sie zrobic takiego trojkata" << endl;
