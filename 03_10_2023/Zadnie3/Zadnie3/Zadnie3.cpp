@@ -12,11 +12,11 @@ int main()
     cout << "Podaj 3 bok" << endl;
     cin >> c;
 
-    if(a == 0 && b == 0 && c == 0)
-        cout << "Nie można wpisać 0" << endl;
+    if (a == 0 || b == 0 || c == 0)
+        cout << "Nie mozna wpisac 0" << endl;
     else if (a + b > c && a + c > b && b + c > a)
-        cout << "da sie zrobic taki trojkat" << endl;
+        cout << "Da sie zrobic taki trojkat" << endl;
     else
-        cout << "nie da sie zrobic takiego trojkata" << endl;
+        cout << "Nie da sie zrobic takiego trojkata" << endl;
 }
 
