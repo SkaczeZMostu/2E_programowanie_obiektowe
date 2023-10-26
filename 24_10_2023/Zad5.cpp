@@ -1,50 +1,61 @@
 #include <iostream>
+
 using namespace std;
 
-int main() {
-    int sum = 0;
-    int negativeCount = 0;
-    int positiveCount = 0;
-    int evenCount = 0;
-    int oddCount = 0;
-    int previousNumber = -1;
-    int currentNumber;
+int main()
+{
+    int suma = 0;
+    int ujemne = 0;
+    int dodatnie = 0;
+    int parzyste = 0;
+    int nieparzyste = 0;
+    int ostatnialiczba = -1;
+    int liczba;
 
     while (true) {
-        cout << "Podaj liczbę: ";
-        cin >> currentNumber;
+        cout << "Podaj liczbe: ";
+        cin >> liczba;
 
-        if (currentNumber == previousNumber) {
-            cout << "Podano dwie identyczne liczby. Koniec programu." << endl;
+        if (liczba == ostatnialiczba) {
+            cout << "Liczba jest taka sama jak ostatnia!!! " << endl;
+            cout << "" << endl;
+            cout << "Ostatnia wpisana liczba to: " << ostatnialiczba << endl;
+            cout << "Ilosc podanych liczb: " << (ujemne + dodatnie) << endl;
+            cout << "Ilosc podanych liczb ujemnych: " << ujemne << endl;
+            cout << "Ilosc podanych liczb dodatnich: " << dodatnie << endl;
+            cout << "Ilosc podanych liczb przystych: " << parzyste << endl;
+            cout << "Ilosc podanych liczb nieparzystych: " << nieparzyste << endl;
             break;
         }
 
-        sum += currentNumber;
+        suma = suma + liczba;
 
-        if (currentNumber < 0) {
-            negativeCount++;
-        } else {
-            positiveCount++;
+        if (liczba < 0) {
+            ujemne++;
+        }
+        else {
+            dodatnie++;
         }
 
-        if (currentNumber % 2 == 0) {
-            evenCount++;
-        } else {
-            oddCount++;
+        if (liczba % 2 == 0) {
+            parzyste++;
+        }
+        else {
+            nieparzyste++;
         }
 
-        previousNumber = currentNumber;
+        ostatnialiczba = liczba;
 
-        if (sum > 100 || negativeCount > 10) {
-            cout << "Ostatnia podana liczba: " << currentNumber << endl;
-            cout << "Liczba podanych liczb: " << (positiveCount + negativeCount) << endl;
-            cout << "Liczba liczb ujemnych: " << negativeCount << endl;
-            cout << "Liczba liczb dodatnich: " << positiveCount << endl;
-            cout << "Liczba liczb parzystych: " << evenCount << endl;
-            cout << "Liczba liczb nieparzystych: " << oddCount << endl;
+        if (suma > 100 || ujemne > 10) {
+            cout << "Ostatnia wpisana liczba to: " << ostatnialiczba << endl;
+            cout << "Ilosc podanych liczb: " << (ujemne + dodatnie) << endl;
+            cout << "Ilosc podanych liczb ujemnych: " << ujemne << endl;
+            cout << "Ilosc podanych liczb dodatnich: " << dodatnie << endl;
+            cout << "Ilosc podanych liczb przystych: " << parzyste << endl;
+            cout << "Ilosc podanych liczb nieparzystych: " << nieparzyste << endl;
             break;
         }
+
+       
     }
-
-    return 0;
 }
