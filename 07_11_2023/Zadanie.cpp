@@ -8,7 +8,6 @@ int main()
 {
     srand(time(0));
     int number;
-    int computer = rand() % 5 + 1;
     int win = 0;
     int cwin = 0;
     int draw = 0;
@@ -16,6 +15,7 @@ int main()
     while(win != 3){
         cout << "Podaj liczbe od 1-5(1-nozyce, 2-papier, 3-kamien, 4-jaszczurka, 5-spock)" << endl;
         cin >> number;
+        int computer = rand() % 5 + 1;
         if (number == 0 && number > 5) {
             cout << "Zla liczba " << endl;
             break;
