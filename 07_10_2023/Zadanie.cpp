@@ -1,38 +1,80 @@
-﻿#include <iostream>
-#include <cstdlib>
-#include <time.h>
+#include <iostream>
 #include <ctime>
+#include <cstdlib>
+#include <string>
+
 using namespace std;
 
-int main()
-{
-    srand(time(0));
-    int number;
-    int computer = rand() % 5 + 1;
-    cout << "Podaj liczbe od 1-5(1-nożyce, 2-papier, 3-kamien, 4-jaszczurka, 5-spock)" << endl;
-    cin >> number;
-    while(number == 0 && number > 5){
-        if (number == computer) {
-            cout << "remis" << endl;
+string intToSymbol(int choice) {
+    string symbols[] = {"kamien", "spock", "papier", "jascurka", "nozyce"};
+    return symbols[choice - 1];
+}
+
+int main() {
+    srand(static_cast<unsigned>(time(0))); // Inicjalizacja generatora liczb pseudolosowych
+    int userChoice;
+    int computerChoice;
+    int userWins = 0;
+    int computerWins = 0;
+    int draws = 0;
+    int gamesPlayed = 0;
+
+    while (true) {
+        cout << "Wybierz jeden z symboli:" << endl;
+        cout << "1. kamien" << endl;
+        cout << "2. spock" << endl;
+        cout << "3. papier" << endl;
+        cout << "4. jascurka" << endl;
+        cout << "5. nozyce" << endl;
+        /*cout << "6. air" << endl;
+        cout << "7. paper" << endl;
+        cout << "8. sponge" << endl;
+        cout << "9. wolf" << endl;
+        cout << "10. tree" << endl;
+        cout << "11. human" << endl;
+        cout << "12. snake" << endl;
+        cout << "13. scissors" << endl;
+        cout << "14. fire" << endl;
+        cout << "15. rock" << endl;*/
+
+        cout << "Wybierz numer (0, aby zakonczyc): ";
+        cin >> userChoice;
+
+        if (userChoice == 0) {
+            break;
         }
-        else if (number == 1 && computer == 2 || computer == 4) {
-            cout << "Wygrales" << endl;
+
+        if (userChoice < 1 || userChoice > 5) {
+            cout << "Nieprawidlowy numer. Wybierz ponownie." << endl;
+            continue;
         }
-        else if (number == 2 && computer == 3 || computer == 5) {
-            cout << "Wygrales" << endl;
+
+        computerChoice = rand() % 5 + 1;
+
+        cout << "Twoj wybor: " << intToSymbol(userChoice) << endl;
+        cout << "Wybor komputera: " << intToSymbol(computerChoice) << endl;
+
+        if (userChoice == computerChoice) {
+            cout << "Remis!" << endl;
+            draws++;
         }
-        else if (number == 3 && computer == 1 || computer == 4) {
-            cout << "Wygrales" << endl;
-        }
-        else if (number == 4 && computer == 2 || computer == 5) {
-            cout << "Wygrales" << endl;
-        }
-        else if (number == 5 && computer == 1 || computer == 3) {
-            cout << "Wygrales" << endl;
+        else if (((userChoice - computerChoice + 5) % 5) <= 2) {
+            cout << "Wygrales!" << endl;
+            userWins++;
         }
         else {
-            cout << "przegrales" << endl;
+            cout << "Komputer wygral!" << endl;
+            computerWins++;
         }
+
+        gamesPlayed++;
     }
 
+    cout << "Liczba rozegranych gier: " << gamesPlayed << endl;
+    cout << "Liczba wygranych: " << userWins << endl;
+    cout << "Liczba przegranych: " << computerWins << endl;
+    cout << "Liczba remisow: " << draws << endl;
+
+    return 0;
 }
+
