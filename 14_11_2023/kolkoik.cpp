@@ -4,6 +4,10 @@
 
 using namespace std;
 
+int draw = 0;
+int winuserX = 0;
+int winuserO = 0;
+
 void plansza(char t[])
 {
 	for (int i = 1; i <= 9; i++)
@@ -35,6 +39,10 @@ bool wygrana(char t[], char g)
 	{
 		plansza(t);
 		cout << "\nGRACZ " << g << " WYGRYWA!!!\n\n";
+		if(g == 'X')
+            winuserX++;
+	    else
+	        winuserO++;
 		return true;
 	}
 	return false;
@@ -79,4 +87,9 @@ int main() {
 		cin >> w;
 		cout << "\n\n\n";
 	} while ((w == 'T') || (w == 't'));
+	
+	cout << "Liczba zagranych gier: " << winuserX + winuserO + draw << endl;
+	cout << "Wygrane gracza X: " << winuserX << endl;
+    cout << "Wygrane gracza O: " << winuserO << endl;
+    cout << "Liczba remisow: " << draw << endl;
 }
